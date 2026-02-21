@@ -115,7 +115,6 @@ export default async function Page() {
       Sign in with Apple
     </button>
   </form>
-</div>
                     {/* Google */}
   <form action={googleSignInAction}>
     <button
