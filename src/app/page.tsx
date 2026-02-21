@@ -1,3 +1,4 @@
+import { ThemeToggler } from "@/lib/theme/get-theme-button";
 import { sql } from "drizzle-orm";
 import { auth } from "@/server/auth";
 import { db } from "@/server/db";
@@ -16,12 +17,10 @@ export default async function Page() {
         })
         .from(users);
 
-    const SetThemeButton = getThemeToggler();
-
     return (
         <main className="flex flex-col items-center justify-center min-h-screen supports-[-webkit-touch-callout:none]:min-h-[-webkit-fill-available] antialiased p-4">
             <div className="flex max-w-2xl justify-between w-full">
-                <SetThemeButton />
+                <ThemeToggler />
 
                 <div className="flex gap-2 items-center justify-center">
                     <svg

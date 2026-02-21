@@ -1,11 +1,9 @@
-'use client';// Theming that works perfectly with app router (no flicker, jumps etc!)
+'use client'; 
 
 import dynamic from "next/dynamic";
 
-// Don't SSR the toggle since the value on the server will be different than the client
-export const getThemeToggler = () =>
-	dynamic(() => import("./theme-button"), {
-		ssr: false,
-		// Make sure to code a placeholder so the UI doesn't jump when the component loads
-		loading: () => <div className="w-6 h-6" />,
-	});
+// Export the dynamically loaded component directly, rather than a function that returns it
+export const ThemeToggler = dynamic(() => import("./theme-button"), {
+    ssr: false,
+    loading: () => <div className="w-6 h-6" />,
+});
