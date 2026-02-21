@@ -88,44 +88,44 @@ export default async function Page() {
 
                 {/* --- FIXED CONDITIONAL LOGIC & JSX TAGS --- */}
                 {session?.user?.email ? (
-                    <>
-                        <div className="mt-4 flex flex-col gap-2">
-                            <span>Hello {session.user.name} 👋</span>
-                            <span>{session.user.email}</span>
-                        </div>
-                        
-                        <form action={signOutAction} className="mt-4">
-                            <button 
-                                type="submit"
-                                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors"
-                            >
-                                Sign out
-                            </button>
-                        </form>
-                    </>
-                ) : (
-                    <div className="mt-6 flex flex-col gap-3 w-full max-w-xs mx-auto">
-{/* Apple */}
-  <form action={appleSignInAction}>
-    <button
-      type="submit"
-      className="w-full bg-black hover:bg-gray-900 text-white font-medium py-4 rounded-2xl transition-all flex items-center justify-center gap-3"
-    >
-      <span className="text-3xl -mt-1"></span>
-      Sign in with Apple
-    </button>
-  </form>
-                    {/* Google */}
-  <form action={googleSignInAction}>
-    <button
-      type="submit"
-      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-4 rounded-2xl transition-all flex items-center justify-center gap-3"
-    >
-      Sign in with Google
-    </button>
-  </form>
-                )}
-            </div>
+  <>
+    <div className="mt-4 flex flex-col gap-2">
+      <span>Hello {session.user.name} 👋</span>
+      <span>{session.user.email}</span>
+    </div>
+    <form action={signOutAction} className="mt-4">
+      <button
+        type="submit"
+        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors"
+      >
+        Sign out
+      </button>
+    </form>
+  </>
+) : (
+  <div className="mt-6 flex flex-col gap-3 w-full max-w-xs mx-auto">
+     {/* Apple */}
+    <form action={appleSignInAction}>
+      <button
+        type="submit"
+        className="w-full bg-black hover:bg-gray-900 text-white font-medium py-4 rounded-2xl transition-all flex items-center justify-center gap-3"
+      >
+        <span className="text-3xl -mt-1"></span>
+        Sign in with Apple
+      </button>
+    </form>
+    
+    {/* Google */}
+    <form action={googleSignInAction}>
+      <button
+        type="submit"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-4 rounded-2xl transition-all flex items-center justify-center gap-3"
+      >
+        Sign in with Google
+      </button>
+    </form>
+  </div>
+)}                  
         </main>
     );
 }
