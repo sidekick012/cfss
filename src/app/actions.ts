@@ -11,3 +11,7 @@ export async function googleSignInAction() {
 export async function signOutAction() {
     await signOut({ redirectTo: '/' });
 }
+
+export async function appleSignInAction() {
+  await signIn("apple", { callbackUrl: "/dashboard" });
+}

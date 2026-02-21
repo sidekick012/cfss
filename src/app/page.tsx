@@ -1,9 +1,9 @@
 import { ThemeToggler } from "@/lib/theme/get-theme-button";
 import { sql } from "drizzle-orm";
-import { auth } from "@/server/auth";
+import { auth, signIn } from "@/server/auth";
 import { db } from "@/server/db";
 import { users } from "@/server/db/schema";
-import { signOutAction, googleSignInAction } from "./actions";
+import { appleSignInAction, signOutAction, googleSignInAction } from "./actions";
 
 export const runtime = "edge";
 
@@ -104,14 +104,27 @@ export default async function Page() {
                         </form>
                     </>
                 ) : (
-                    <form action={googleSignInAction} className="mt-4">
-                        <button 
-                            type="submit"
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
-                        >
-                            Sign in with Google
-                        </button>
-                    </form>
+                    <div className="mt-6 flex flex-col gap-3 w-full max-w-xs mx-auto">
+{/* Apple */}
+  <form action={appleSignInAction}>
+    <button
+      type="submit"
+      className="w-full bg-black hover:bg-gray-900 text-white font-medium py-4 rounded-2xl transition-all flex items-center justify-center gap-3"
+    >
+      <span className="text-3xl -mt-1"></span>
+      Sign in with Apple
+    </button>
+  </form>
+</div>
+                    {/* Google */}
+  <form action={googleSignInAction}>
+    <button
+      type="submit"
+      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-4 rounded-2xl transition-all flex items-center justify-center gap-3"
+    >
+      Sign in with Google
+    </button>
+  </form>
                 )}
             </div>
         </main>
