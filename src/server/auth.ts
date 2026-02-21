@@ -5,18 +5,29 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "./db";
 
 export const {
-	handlers: { GET, POST },
-	signIn,
-	signOut,
-	auth,
+  handlers: { GET, POST },
+  signIn,
+  signOut,
+  auth,
 } = NextAuth({
-	trustHost: true,
-	adapter: DrizzleAdapter(db),
-	providers: [
-		Apple({
-  clientId: process.env.AUTH_APPLE_ID!,
-  clientSecret: process.env.AUTH_APPLE_SECRET!,
-}),
-		Google
-	],
+  trustHost: true,
+  adapter: DrizzleAdapter(db),
+  providers: [
+    // Apple
+    Apple({
+      clientId: process.env.AUTH_APPLE_ID!,
+      clientSecret: process.env.AUTH_APPLE_SECRET!,
+      authorization: {
+        params: {
+          scope: "name email",
+          response_mode: "form_post",
+        },
+      },
+    }),
+    // Google
+    Google({
+      clientId: process.env.AUTH_GOOGLE_ID!,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET!,
+    }),
+  ],
 });
