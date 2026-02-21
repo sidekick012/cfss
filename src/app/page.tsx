@@ -1,4 +1,5 @@
 'use client';
+import { signIn, signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { sql } from "drizzle-orm";
 import { auth, signIn, signOut } from "@/server/auth";
@@ -95,15 +96,21 @@ export default async function Page() {
 							<span>Hello {session.user.name} 👋</span>
 							<span>{session.user.email}</span>
 						</div>
-						<form action={signOutAction}>
-  <button type="submit" className="bg-red-500 text-white px-4 py-2 rounded-md">Sign out</button>
-</form>
-					</>
-				) : (
-					<form action={googleSignInAction}>
-  <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">Sign in with Google</button>
-</form>
-				)}
+						{/* Sign out button */}
+<button 
+  onClick={() => signOut({ callbackUrl: "/" })}
+  className="... your existing button classes ..."
+>
+  Sign out
+</button>
+
+{/* Sign in button */}
+<button 
+  onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+  className="... your existing button classes ..."
+>
+  Sign in with Google
+</button>
 			</div>
 		</main>
 	);
