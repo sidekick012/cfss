@@ -8,5 +8,6 @@ mode = "smart"
 
 [[d1_databases]]
 binding = "DATABASE"
-database_name = "cloudflare-saas-stack-db"
-database_id = "294b2613-5f3c-40e5-b32b-bbe664bd9696"
+database_name = "edge-haven-db"
+database_id = "61c0d36a-9013-4eba-93ac-171c597a578f"
+migrations_dir = "./drizzle"
