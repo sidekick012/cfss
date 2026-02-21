@@ -1,4 +1,4 @@
-// Theming that works perfectly with app router (no flicker, jumps etc!)
+'use client';// Theming that works perfectly with app router (no flicker, jumps etc!)
 
 import dynamic from "next/dynamic";
 
