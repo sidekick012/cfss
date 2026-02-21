@@ -3,7 +3,7 @@ import { sql } from "drizzle-orm";
 import { auth } from "@/server/auth";
 import { db } from "@/server/db";
 import { users } from "@/server/db/schema";
-import { getThemeToggler } from "@/lib/theme/get-theme-button";
+import { ThemeToggler } from "@/lib/theme/get-theme-button";
 import { signOutAction, googleSignInAction } from "./actions";
 
 export const runtime = "edge";
