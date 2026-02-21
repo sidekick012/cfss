@@ -14,13 +14,9 @@ export const {
 	adapter: DrizzleAdapter(db),
 	providers: [
 		Apple({
-			clientId: process.env.APPLE_CLIENT_ID!,
-			clientSecret: {
-				appleId: process.env.APPLE_ID!,
-				privateKey: process.env.APPLE_PRIVATE_KEY!,
-				keyId: process.env.APPLE_KEY_ID!,
-			},
-		}),
+  clientId: process.env.AUTH_APPLE_ID!,
+  clientSecret: process.env.AUTH_APPLE_SECRET!,
+}),
 		Google
 	],
 });
