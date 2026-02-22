@@ -19,7 +19,10 @@ export const {
     // Apple first — as you requested
     Apple({
       clientId: process.env.AUTH_APPLE_ID!,
-      clientSecret: process.env.AUTH_APPLE_SECRET!,
+      teamId: process.env.AUTH_APPLE_TEAM_ID!,
+      keyId: process.env.AUTH_APPLE_KEY_ID!,
+      // The .replace ensures that if Cloudflare escapes the \n, we parse it back into real line breaks for the crypto generator
+      privateKey: process.env.AUTH_APPLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
       authorization: {
         params: {
           scope: "name email",
