@@ -11,12 +11,12 @@ export const {
   auth,
 } = NextAuth({
   trustHost: true,
-  baseUrl: process.env.AUTH_URL || "https://portal.edgehavenhosting.com",   // ← THIS LINE FIXES IT
-  debug: true,   // keep for now, we can remove later
+  debug: true,   // keep until everything works
 
   adapter: DrizzleAdapter(db),
 
   providers: [
+    // Apple first — as you requested
     Apple({
       clientId: process.env.AUTH_APPLE_ID!,
       clientSecret: process.env.AUTH_APPLE_SECRET!,
