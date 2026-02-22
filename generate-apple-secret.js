@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 async function generate() {
   const teamId = '86S486L7XB';          // ← from Apple Developer > Membership (10 chars)
   const keyId = '3DV6RA4Z39';            // ← the Key ID you created (10 chars)
-  const clientId = 'com.edgehaven.signin'; // ← the Services ID you created
+  const clientId = 'com.edgehavenhosting.signin'; // ← the Services ID you created
   const privateKeyPem = await fs.readFile('AuthKey_3DV6RA4Z39.p8', 'utf8'); // ← your downloaded .p8 file
 
   const now = Math.floor(Date.now() / 1000);
