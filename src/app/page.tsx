@@ -8,11 +8,23 @@ export default async function DashboardPage() {
   const session = await auth();
 
   // If they somehow land here without logging in, this is a fallback.
-  // Ideally, middleware handles this, but it's good to be safe.
   if (!session?.user) {
     return (
-      <div className="flex h-screen items-center justify-center text-neutral-500">
-        Please sign in from edgehavenhosting.com to access your portal.
+      <div className="flex flex-col h-screen items-center justify-center bg-neutral-50 dark:bg-neutral-950">
+        <div className="text-center space-y-6 p-8 bg-white dark:bg-neutral-900 rounded-[20px] shadow-sm border border-neutral-200 dark:border-neutral-800">
+          <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">
+            Session Expired
+          </h2>
+          <p className="text-neutral-500 dark:text-neutral-400">
+            Please sign in to access your EdgeHaven portal.
+          </p>
+          <a 
+            href="/api/auth/signin" 
+            className="w-full bg-black dark:bg-white text-white dark:text-black h-[44px] rounded-[15px] flex items-center justify-center font-medium text-[15px] transition-colors tracking-wide"
+          >
+            Sign In securely
+          </a>
+        </div>
       </div>
     );
   }
