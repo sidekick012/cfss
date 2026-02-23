@@ -1,7 +1,5 @@
 import { integer, sqliteTable, text, primaryKey } from "drizzle-orm/sqlite-core"
-import { drizzle } from "drizzle-orm/libsql"
 import type { AdapterAccountType } from "next-auth/adapters"
-import { db } from "." 
  
 export const users = sqliteTable("user", {
   id: text("id")
