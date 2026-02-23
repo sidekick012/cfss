@@ -8,22 +8,26 @@ export default function SubscribeButton() {
   const handleSubscribe = async () => {
     try {
       setLoading(true);
-      // Calls the Stripe API route we just created
+      
       const response = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
 
-      const data = await response.json() as { url?: string };
+      if (!response.ok) {
+        throw new Error(`Server returned ${response.status}`);
+      }
+
+      const data = (await response.json()) as { url?: string };
       
-      // Redirect the user to their customized Stripe Checkout URL
       if (data.url) {
         window.location.href = data.url;
       } else {
-        console.error('No checkout URL returned');
+        throw new Error('No checkout URL returned from Stripe');
       }
     } catch (error) {
       console.error('Checkout error:', error);
+      alert("We couldn't reach the payment server. Please try again."); // <-- New user feedback!
     } finally {
       setLoading(false);
     }
