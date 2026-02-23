@@ -4,7 +4,7 @@ import Stripe from "stripe";
 
 // Initialize Stripe with your secret key
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2023-10-16", // Use the latest API version
+  apiVersion: "2026-01-28",
 });
 
 export async function POST(req: Request) {
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       customer_email: session.user.email, // Pre-fills their email on the checkout screen!
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID, // The $30/year EdgeHaven tier
+          price: process.env.STRIPE_PRICE_ID,
           quantity: 1,
         },
       ],
