@@ -1,12 +1,14 @@
 /* eslint-disable next-on-pages/no-nodejs-runtime */
 import { ThemeToggler } from "@/lib/theme/get-theme-button";
 import { sql } from "drizzle-orm";
-import { auth } from "@/server/auth";
+import { auth, handlers } from "@/server/auth";
 import { getDb } from "@/server/db";
 import { users } from "@/server/db/schema";
 import { appleSignInAction, signOutAction, googleSignInAction } from "./actions";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
+
+export const { GET, POST } = handlers;
 
 export default async function Page() {
   const session = await auth();
