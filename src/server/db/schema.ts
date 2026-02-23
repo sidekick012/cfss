@@ -9,6 +9,11 @@ export const users = sqliteTable("user", {
   email: text("email").unique(),
   emailVerified: integer("emailVerified", { mode: "timestamp_ms" }),
   image: text("image"),
+  // --- STRIPE BILLING COLUMNS ---
+  stripeCustomerId: text("stripe_customer_id").unique(),
+  stripeSubscriptionId: text("stripe_subscription_id").unique(),
+  stripePriceId: text("stripe_price_id"),
+  stripeCurrentPeriodEnd: integer("stripe_current_period_end", { mode: "timestamp" }),
 })
  
 export const accounts = sqliteTable(

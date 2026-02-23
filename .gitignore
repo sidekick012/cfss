@@ -4,6 +4,9 @@ bun.lockb
 *.env
 *.vars
 
+.env.*
+.dev.vars
+
 # dependencies
 /node_modules
 /.pnp
