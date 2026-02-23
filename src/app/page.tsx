@@ -8,8 +8,6 @@ import { appleSignInAction, signOutAction, googleSignInAction } from "./actions"
 
 export const runtime = "edge";
 
-export const { GET, POST } = handlers;
-
 export default async function Page() {
   const session = await auth();
   const userCount = await getDb()
