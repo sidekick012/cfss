@@ -1,3 +1,4 @@
+/* eslint-disable next-on-pages/no-nodejs-runtime */
 import { ThemeToggler } from "@/lib/theme/get-theme-button";
 import { sql } from "drizzle-orm";
 import { auth } from "@/server/auth";
