@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { NextResponse } from "next/server";
 import { auth } from "@/server/auth"; // Adjust this path if your auth.ts is located elsewhere
 import Stripe from "stripe";
