@@ -14,7 +14,7 @@ export default function SubscribeButton() {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      const data = await response.json();
+      const data = await response.json() as { url?: string };
       
       // Redirect the user to their customized Stripe Checkout URL
       if (data.url) {
