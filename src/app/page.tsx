@@ -1,15 +1,15 @@
 import { ThemeToggler } from "@/lib/theme/get-theme-button";
 import { sql } from "drizzle-orm";
 import { auth } from "@/server/auth";
-import { db } from "@/server/db";
+import { getDb } from "@/server/db";
 import { users } from "@/server/db/schema";
 import { appleSignInAction, signOutAction, googleSignInAction } from "./actions";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export default async function Page() {
   const session = await auth();
-  const userCount = await db
+  const userCount = await getDb()
     .select({
       count: sql<number>`count(*)`.mapWith(Number),
     })

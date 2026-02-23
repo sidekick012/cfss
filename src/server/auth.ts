@@ -1,3 +1,4 @@
+export const runtime = "nodejs";git 
 import NextAuth from "next-auth";
 import Apple from "next-auth/providers/apple";
 import Google from "next-auth/providers/google";
@@ -11,25 +12,33 @@ export const {
   auth,
 } = NextAuth({
   trustHost: true,
-  debug: true,   // keep until everything works
-
+  debug: true,
   adapter: DrizzleAdapter(db),
-
   providers: [
-    // Apple first — as you requested
     Apple({
       clientId: process.env.AUTH_APPLE_ID!,
       clientSecret: process.env.AUTH_APPLE_SECRET!,
-      authorization: {
-        params: {
-          scope: "name email",
-          response_mode: "form_post",
-        },
-      },
     }),
     Google({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
     }),
   ],
+  callbacks: {
+    async signIn({ user, account, profile }) {
+      console.log("signIn callback", { user, account, profile });
+      return true;
+    },
+  },
+  logger: {
+    error(code, ...message) {
+      console.error("AUTH ERROR:", code, message);
+    },
+    warn(code, ...message) {
+      console.warn("AUTH WARN:", code, message);
+    },
+    debug(code, ...message) {
+      console.log("AUTH DEBUG:", code, message);
+    },
+  },
 });
